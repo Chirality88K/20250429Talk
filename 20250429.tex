@@ -1,0 +1,87 @@
+%# -*- coding:utf-8 -*-
+\documentclass[10pt,aspectratio=169,mathserif]{beamer}		
+%设置为 Beamer 文档类型，设置字体为 10pt，长宽比为16:9，数学字体为 serif 风格
+
+%%%%-----导入宏包-----%%%%
+\usepackage{zju}			%导入 zju 模板宏包
+%\usepackage{ctex}			%导入 ctex 宏包，添加中文支持
+\usepackage{amsmath,amsfonts,amssymb,bm}   %导入数学公式所需宏包
+\usepackage{color}			 %字体颜色支持
+\usepackage{graphicx,hyperref,url}
+\usepackage{metalogo}	% 非必须
+%% 上文引用的包可按实际情况自行增删
+%%%%%%%%%%%%%%%%%%
+\usepackage{fontspec}
+\usepackage{xeCJK}
+% \setCJKmainfont{Source Han Sans SC}
+
+
+
+\beamertemplateballitem		%设置 Beamer 主题
+
+%%%%------------------------%%%%%
+\catcode`\。=\active         %或者=13
+\newcommand{。}{．}				
+%将正文中的“。”号转换为“.”。中文标点国家规范建议科技文献中的句号用圆点替代
+%%%%%%%%%%%%%%%%%%%%%
+
+%%%%----首页信息设置----%%%%
+\title[Optimization of Corner Blending Curves]{Optimization of Corner Blending Curves}
+%\subtitle{——这里是副标题}			
+%%%%----标题设置
+
+
+\author[WSL]{
+   Rida T. Farouki , Francesca Pelosi, Maria Lucia Sampoli \\\medskip
+  {\small {Department of Mechanical and Aerospace Engineering, University of California\\
+  		Dipartimento di Matematica, Università di Roma "Tor Vergata", Via della Ricerca Scientifica\\
+  		Dipartimento di Ingegneria dell'Informazione e Scienze Matematiche, Università di Siena}} \\
+ }
+%%%%----个人信息设置
+  
+%\institute[IOPP]{
+ % 计算机学院 \\ 
+  %浙江大学}
+%%%%----机构信息
+
+\date[Apr. 29 2025]{
+  2025.4.29}
+%%%%----日期信息
+  
+\begin{document}
+
+\begin{frame}
+	\titlepage
+\end{frame}				%生成标题页
+
+
+\begin{frame}
+	\frametitle{Contents}
+	\tableofcontents
+\end{frame}				%生成提纲页
+
+\section{Introduction}
+\begin{frame}
+	\frametitle{Introduction}
+	 
+	
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Canonical corner blending problem}
+	See the figure below, we have
+	$\mathbf{p}_i=(-1,0)\:,\quad\mathbf{p}_c=(0,0)\:,\quad\mathbf{p}_o=(\cos\theta,\sin\theta)\:$ and 
+	 $$\|\mathbf{p}_c-\mathbf{p}_i\|=\|\mathbf{p}_o-\mathbf{p}_c\|$$
+ $\mathbf{t}(0)=\mathbf{r}^{\prime}(0)/\|\mathbf{r}^{\prime}(0)\|=(1,0)$ and t(1)= $\mathbf{r} ^{\prime }( 1) / \| \mathbf{r} ^{\prime }( 1) \|$ = $( \cos \theta , \sin \theta ) .$ 
+	The parametric speed of the curve r$(\xi)=(x(\xi),y(\xi))$ is defined
+	by
+	$$\sigma(\xi)\:=\:\left\|\mathbf{r}'(\xi)\right\|\:=\:\sqrt{x'^2(\xi)+y'^2(\xi)}\:=\:\frac{\mathrm{d}s}{\mathrm{d}\xi}\:,$$
+	where s is arc length along r($\xi).$
+	\begin{figure}
+		\includegraphics[scale=0.3]{figures/1.png}
+	\end{figure}
+	
+\end{frame}
+
+\end{document}
