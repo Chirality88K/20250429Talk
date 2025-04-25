@@ -79,14 +79,57 @@
 	$$\sigma(\xi)\:=\:\left\|\mathbf{r}'(\xi)\right\|\:=\:\sqrt{x'^2(\xi)+y'^2(\xi)}\:=\:\frac{\mathrm{d}s}{\mathrm{d}\xi}\:,$$
 	where s is arc length along r($\xi).$
 	\begin{figure}
-		\includegraphics[scale=0.3]{figures/1.png}
+		\includegraphics[scale=0.4]{figures/1.png}
+	\end{figure}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Canonical corner blending problem}
+	In the context of applications, two features of the corner rounding curve are of particular interest — the deviation $\delta_m$ of the mid-point from the original exact corner $(0 , 0)$ and the mid-point
+	curvature magnitude, namely
+	$$\delta_{\mathrm{m}}=\parallel\mathbf{r}(\frac{1}{2})\parallel\quad\mathrm{and}\quad\kappa_{\mathrm{m}}=\mid\kappa(\frac{1}{2})\mid.$$
+	The goal is thus to identify smooth curves, satisfying prescribed continuity conditions at $p_i$ and $p_o$, that balance the desire to subdue both $\delta_m$ and $\kappa_m$.
+	
+	\begin{figure}
+		\includegraphics[scale=0.4]{figures/1.png}
 	\end{figure}
 	
 \end{frame}
 
 \begin{frame}
 	\frametitle{Polynomial corner curves}
+	Consider the use of a planar degree $n$ Bézier curve
 	
+	$$\mathbf{r}(\xi)\:=\:\sum_{k=0}^{n}\mathbf{p}_{k}\:b_{k}^{n}(\xi)\:,\quad b_{k}^{n}(\xi)\:=\:\binom{n}{k}(1-\xi)^{n-k}\xi^{k}\:,$$
+	
+	symmetric about the normal line at the mid-point $\mathbf{r}(\frac{1}{2})$ to define a corner curve. For even $n$, we set
+	$$\mathbf{p}_{0}\:=\:\mathbf{p}_{i}\:,\quad\mathbf{p}_{n/2}\:=\:\mathbf{p}_{c}\:,\quad\mathbf{p}_{n}\:=\:\mathbf{p}_{o}\:,$$
+	and for odd $n$, we again set $\mathbf{p}_0 = \mathbf{p}_i$
+	and $\mathbf{p}_n = \mathbf{p}_o$.
 \end{frame}
 
+\begin{frame}
+	\frametitle{Polynomial corner curves(The case $n=3$)}
+
+		$$\mathbf{p}_{0}\:=\:(-1,0)\:,\quad\mathbf{p}_{1}\:=\:\lambda(-1,0)\:\:\mathbf{p}_{2}\:=\:\lambda(\cos\theta,\sin\theta)\:,\quad\mathbf{p}_{3}\:=\:(\cos\theta,\sin\theta)\:.$$
+		
+		$$\delta_{\mathrm{m}}\:=\:\frac{|\sin\frac{1}{2}\theta\:|}{4}\:(3\lambda+1)\:,\quad\kappa_{\mathrm{m}}\:=\:\frac{8\sqrt{2}\:|\sin\theta\:|}{3(1+\cos\theta)^{3/2}}\:\frac{1-\lambda}{(1+\lambda)^2}.$$
+		\begin{columns}
+			\column{0.4\textwidth}
+			\begin{figure}[htbp]
+				\includegraphics[scale=0.3]{figures/2.png}
+			\end{figure}
+		\column{0.6\textwidth}
+		Note that $\delta_ m$ is monotone-increasing with $\lambda$, having its minimum value when $\lambda = 0$ with $\mathbf{p}_1 = \mathbf{p}_2 = (0 , 0)$. \\
+		On the other hand, $\kappa_m$
+		is monotone-decreasing with $\lambda$ , having its minimum value when
+		$\lambda = 1$with $\mathbf{p}_0 = \mathbf{p}_1 = ( − 1 , 0)$ and $\mathbf{p}_2 = \mathbf{p}_3 = (\cos \theta, \sin \theta )$.
+		Figure left shows examples of these degree 3 corner curves for the
+		turning angle $\theta=\pi/2$.
+		\end{columns}
+		
+		
+
+\end{frame}
 \end{document}
