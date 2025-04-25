@@ -67,7 +67,7 @@
 	
 \end{frame}
 
-
+\section{Canonical corner blending problem}
 \begin{frame}
 	\frametitle{Canonical corner blending problem}
 	See the figure below, we have
@@ -97,6 +97,7 @@
 	
 \end{frame}
 
+\section{Polynomial corner curves}
 \begin{frame}
 	\frametitle{Polynomial corner curves}
 	Consider the use of a planar degree $n$ Bézier curve
@@ -118,7 +119,7 @@
 		\begin{columns}
 			\column{0.4\textwidth}
 			\begin{figure}[htbp]
-				\includegraphics[scale=0.3]{figures/2.png}
+				\includegraphics[scale=0.27]{figures/2.png}
 			\end{figure}
 		\column{0.6\textwidth}
 		Note that $\delta_ m$ is monotone-increasing with $\lambda$, having its minimum value when $\lambda = 0$ with $\mathbf{p}_1 = \mathbf{p}_2 = (0 , 0)$. \\
@@ -128,8 +129,58 @@
 		Figure left shows examples of these degree 3 corner curves for the
 		turning angle $\theta=\pi/2$.
 		\end{columns}
-		
-		
+\end{frame}
 
+\begin{frame}
+	\frametitle{Polynomial corner curves(The case $n=4$)}
+	
+	$$\mathbf{p}_{0}\:=\:(-1,0)\:,\quad\mathbf{p}_{1}\:=\:\lambda(-1,0)\:,\quad \mathbf{p}_{2}\:=\:(0,0)\:,\quad\mathbf{p}_{3}\:=\:\lambda(\cos\theta,\sin\theta)\:,\quad\mathbf{p}_{4}\:=\:(\cos\theta,\sin\theta)\:.$$
+	
+	$$\delta_{\mathrm{m}}\:=\:\frac{|\sin\frac{1}{2}\theta\:|}{8}\:(4\lambda+1)\:,\quad\kappa_{\mathrm{m}}\:=\:\frac{6\sqrt{2}\:|\sin\theta\:|}{(1+\cos\theta)^{3/2}}\:\frac{1}{(1+2\lambda)^2}.$$
+	\begin{columns}
+		\column{0.4\textwidth}
+		\begin{figure}[htbp]
+			\includegraphics[scale=0.27]{figures/3.png}
+		\end{figure}
+		\column{0.6\textwidth}
+		As in the case $n=3$, $\delta_{m}$ is monotone-increasing with $\lambda$ , having its minimum value when $\lambda=0$ with $\mathbf{p} _{1}$ = $\mathbf{p} _{2} = \mathbf{p}_{3}=(0,0)$ , whereas $\kappa_{\mathrm{m}}$ is monotone-decreasing with $\lambda$ ,having its minimum value when $\lambda=1$ with $\mathbf{p}_{0}=\mathbf{p}_{1}=(-1,0)$ and $\mathbf{p}_{2}=\mathbf{p}_{3}=(\cos\theta,\sin\theta)$.
+		
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Polynomial corner curves(The case $n=5$)}
+	
+	
+	
+\end{frame}
+\begin{frame}
+	\frametitle{Polynomial corner curves(The case $n=6$)}
+	
+	
+	
+\end{frame}
+\section{Corner curve optimization}
+\begin{frame}
+	\frametitle{Corner curve optimization}
+	The arc length $S$ of the corner curve $r( \xi)$ is defined in terms of the
+	parametric speed by
+	$$S = \int_0^1\sigma(\xi)\mathrm{d}\xi$$
+	and the mean value of ${\sigma} ( \xi )$ is $\overline{\sigma}= S$. A dimensionless measure
+	of the mean square deviation of $\sigma ( \xi )$ about $\overline{\sigma}$ is then defined through the expression
+	$$\gamma = \frac1{S^2}\int_0^1[\sigma(\xi)-\overline{\sigma}]^2\mathrm{d}\xi=\frac1{S^2}\int_0^1\sigma^2(\xi)-1$$
+\end{frame}
+\begin{frame}
+	\frametitle{Corner curve optimization}
+We introduce individual dimensionless measures of $\kappa_\mathrm{m}$ and $\delta_{m}$ by dividing them by the values
+$$\bar{\kappa}_{\mathrm{m}}\:=\:\frac{\mid\theta\mid}{S}\quad\mathrm{and}\quad\bar{\delta}_{\mathrm{m}}\:=\:\frac{1}{2}\mid\sin\frac{1}{2}\theta\mid.$$
+These are the averages of $\kappa_{\mathrm{m}}$ and $\delta_{\mathrm{m}}$ for the two "extreme" solutions identified, namely, the piecewise-linear path from $\mathbf{p}_i$ to $\mathbf{p}_o$ through $\mathbf{p}_o$, and the direct short-cut linear path from $\mathbf{p}_i$ to $\mathbf{p}_o$. We then define the objective function
+$$f = a(\delta_{\mathrm{m}}/\bar{\delta}_{\mathrm{m}})+b(\kappa_{\mathrm{m}}/\bar{\kappa}_{\mathrm{m}})+(1-a-b)\gamma$$
+where $a, b$ are non-negative weights such that $a + b \leq 1$.
+\end{frame}
+\section{Optimization algorithm}
+\begin{frame}
+	\frametitle{Univariate objective function}
+	
 \end{frame}
 \end{document}
