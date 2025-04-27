@@ -190,8 +190,49 @@ where $a, b$ are non-negative weights such that $a + b \leq 1$.
 \end{frame}
 \section{Optimization algorithm}
 \begin{frame}
-	\frametitle{Univariate objective function}
+	\frametitle{Multivariate objective function}
+	Among available algorithms for solving constrained optimization problems of the form
+	$$\left\{
+	\begin{aligned}
+	&\min_{\mathbf{x}}f(\mathbf{x})\\
+	&h_i(\mathbf{x})=0,\quad i=1,\dots,n_e,\\
+	&g_i(\mathbf{x})\leq0,\quad i-1,\dots,n_i,
+	\end{aligned}
+	\right.$$
+	in a set of variables $\mathbf{x}$, we opt for the Sequential Quadratic Programming (SQP) method.
 	
+\end{frame}
+\begin{frame}
+	\frametitle{Multivariate objective function}
+	With the equality constraints multiplied by factors $\rho_i,i=$ $1,\ldots,n_{e}$ and the inequality constraints by factors $\tau_i,i=1,\ldots,n_i$ (the so called KKT multipliers), the problem then becomes
+	
+	$$\left\{
+	\begin{aligned}
+	&\nabla f(\mathbf{x})+\sum_{i=1}^{n_e}\nabla\rho_i\:h_i(\mathbf{x})+\sum_{i=1}^{n_i}\nabla\tau_i\:g_i(\mathbf{x})=0\\
+	&\tau_i\:g_i(\mathbf{x})=0\:,\quad i=1,\ldots,n_i\:,\\
+	&\tau_i\geq0\:,\quad i=1,\ldots,n_i\:.
+	\end{aligned}
+	\right.$$
+	
+	Satisfaction of the above equations is a necessary condition for the solution of a constrained optimization problem. When the problem is strictly convex(i.e.,$f(\mathbf{x})$ is strictly convex and $h_i(\mathbf{x})$, $g_i(\mathbf{x})$ define a convex region) the KKT equations are both necessary and sufficient for a global optimal solution.
+\end{frame}
+\begin{frame}
+	\frametitle{Multivariate objective function}
+	The basic structure of an SQP method involves major and minor iterations. The major iterations generate a sequence of iterates $(\mathbf{x}_k,\boldsymbol{\rho}_k,\boldsymbol{\tau}_k)$ for the solution values $\mathbf{x}=(x_{1},\ldots,x_{n})$ and the Lagrange multipliers $\rho=(\rho_{1},\ldots,\rho_{{n_{e}}})^{T}$ and $\boldsymbol{\tau}=(\tau_1,\ldots,\tau_{n_i})^T$ associated with the constraints, that converge to $(\mathbf{x}^*,\boldsymbol{\rho}^*,\boldsymbol{\tau}^*).$\par
+	 At each iteration, a quadratic programming (QP) subproblem is used to generate a search direction d$_k$ for the next iterate $(\mathbf{x}_{k+1},\boldsymbol{\rho}_{k+1},\boldsymbol{\tau}_{k+1}).$ 
+\end{frame}
+\begin{frame}
+	\frametitle{Multivariate objective function}
+	 Solving this QP subproblem itself requires the minor iterative procedure. The subproblem has the form
+	
+	$$\left\{
+	\begin{aligned}
+	&\min_{\mathbf{d}_k}f(\mathbf{x}_k)+\nabla f(\mathbf{x}_k)^T\mathbf{d}_k+\frac12\mathbf{d}^T_k\mathbf{H}_k\mathbf{d}_k,\\
+	&\mathbf{h}(\mathbf{x}_k)+\nabla\mathbf{h}(\mathbf{x}_k)^T\mathbf{d}_k=0,\\
+	&\mathbf{g}(\mathbf{x}_k)+\nabla\mathbf{g}(\mathbf{x}_k)^T\mathbf{d}_k\geq0.
+	\end{aligned}
+	\right.$$
+	The new iterate is obtained through a line search in the direction $\mathbf{d}_k$ to achieve a sufficient decrease of a merit function, defined using information about the objective function and the constraints and their derivatives, possibly combined with information obtained at earlier iterations.
 \end{frame}
 \section{Computed examples}
 \begin{frame}
@@ -354,5 +395,58 @@ and with $\mathbf{p}_0=(-1,0)$, $\mathbf{p}_3=(\cos\theta,\sin\theta)$ the inter
 	$$\mathbf{p}_1=\mathbf{p}_2=\frac{(-1,0)}{6\cos\frac{1}{2}\theta+1},\quad\mathbf{p}_3=\mathbf{p}_4=\frac{(\cos\theta,\sin\theta)}{6\cos\frac{1}{2}\theta+1}.$$
 	
 
+\end{frame}
+\begin{frame}
+	\frametitle{$G^3$ PH cubic corner curve}
+	 For a symmetric curve satisfying the $G^{2}$ continuity conditions $\arg ( \mathbf{r} ^{\prime }( 0) )$ = 0, arg$( \mathbf{r} ^{\prime }( 1) )$ = $\theta$ and $\kappa ( 0)$ = $\kappa ( 1)$ = 0, the coefficients must be of the form
+	
+	
+	$$\begin{aligned}&\mathbf{w}_{0}\:=\:p\:,\quad\mathbf{w}_{1}\:=\:q\:,\quad\mathbf{w}_{2}\:=\:\alpha\:q\exp(\mathrm{i}\frac{1}{2}\theta\:)\:,\\&\mathbf{w}_{3}\:=\:\beta\:p\exp(\mathrm{i}\frac{1}{2}\theta\:)\:,\end{aligned}$$
+	
+	where $p,q$ are real values and $\alpha,\beta=\pm1.$ Matching the end points r(0)=-1 and $\mathbf{r}(1)=\exp($i$\theta)$, we then have $q=0$ and 
+	
+	$$p^2\:=\:\frac{140\cos\frac{1}{2}\theta}{20\cos\frac{1}{2}\theta+\alpha}\:.$$
+	
+	We henceforth choose $\alpha=1$, since $\alpha=-1$ yields solutions with undesirable loops.
+\end{frame}
+\begin{frame}
+	\frametitle{$G^3$ PH cubic corner curve}
+	Thus, we obtain control points $\mathbf{p}_0=(-1,0),\quad\mathbf{p}_{7}=(\cos\theta,\sin\theta)$ and
+	
+	$$\mathbf{p}_{1}\:=\:\mathbf{p}_{2}\:=\:\mathbf{p}_{3}\:=\:\frac{(-1,0)}{20\cos\frac{1}{2}\theta+1}\:,$$
+	$$\mathbf{p}_{4}\:=\:\mathbf{p}_{5}\:=\:\mathbf{p}_{6}\:=\:\frac{(\cos\theta,\sin\theta)}{20\cos\frac{1}{2}\theta+1}\:.$$
+	
+	Although the above construction imposes only $G^{2}$ continuity the resulting degree 7 PH curves necessarily define a $G^{3}$ blend with the incoming/outgoing line segments, since $\mathbf{p}_0,\mathbf{p}_1,\mathbf{p}_2,\mathbf{p}_3$ and $\mathbf{p}_{4},\mathbf{p}_{5},\mathbf{p}_{6},\mathbf{p}_{7}$ are colinear, and this implies that $\kappa=$ d$\kappa /$ds=0 at $\xi=0$ and $\xi=1.$ These $G^{3}$ corner curves possess no free parameters, and we get
+	
+	$$\delta_{\mathrm{m}}\:=\:\frac{(5\cos\frac{1}{2}\theta+16)\:|\sin\frac{1}{2}\theta\:|}{16(20\cos\frac{1}{2}\theta+1)}\:,$$
+	$$\kappa_{\mathrm{m}}\:=\:\frac{96\left(20\cos\frac{1}{2}\theta+1\right)|\tan\frac{1}{2}\theta\:|}{35\left(\cos\frac{1}{2}\theta+1\right)^{2}}\:.$$
+\end{frame}
+\begin{frame}
+	\frametitle{Computed examples}
+	\begin{figure}
+		\includegraphics[scale=0.4]{figures/18.png}
+		\caption{PH corner curves of degree 3 , 5 , 7 and continuity $G^1 , G^2 , G^3$ with their curvature profiles for angle $\pi/4$.}
+	\end{figure}
+\end{frame}
+\begin{frame}
+	\frametitle{Computed examples}
+	\begin{figure}
+		\includegraphics[scale=0.4]{figures/19.png}
+		\caption{PH corner curves of degree 3 , 5 , 7 and continuity $G^1 , G^2 , G^3$ with their curvature profiles for angle $\pi/2$.}
+	\end{figure}
+\end{frame}
+\begin{frame}
+	\frametitle{Computed examples}
+	\begin{figure}
+		\includegraphics[scale=0.4]{figures/20.png}
+		\caption{PH corner curves of degree 3 , 5 , 7 and continuity $G^1 , G^2 , G^3$ with their curvature profiles for angle $3\pi/4$.}
+	\end{figure}
+\end{frame}
+\begin{frame}
+	\frametitle{Computed examples}
+	\begin{figure}
+		\includegraphics[scale=0.4]{figures/21.png}
+		\caption{Comparison of the PH and optimized ordinary polynomial corner curves for the angle $\theta = \pi/2$ . Left: $G^1$ PH cubic (black) with optimized cubics (red). Center: the $G^2$ PH quintic (black) and optimized quartics (green) and quintics (red). Right: the $G^3$ PH septic (blue) and optimized sextics (red).}
+	\end{figure}
 \end{frame}
 \end{document}
