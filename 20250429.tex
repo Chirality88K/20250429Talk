@@ -63,8 +63,13 @@
 \section{Introduction}
 \begin{frame}
 	\frametitle{Introduction}
-	 
-	
+	  In many design contexts, smooth blends between extended “simple” (linear or circular) segments are required.  These blending curves are required to exhibit a prescribed order of geometric continuity with the segments they connect. A number of key features of corner blending curves may be identified:
+	  \begin{itemize}
+	  	\item Symmetry about their mid-points
+	  	\item unimodal curvature profiles
+	  	\item represent a reasonable compromise between
+	  	minimizing the mid-point curvature $\kappa_m$ and deviation $\delta_m$ from the sharp corner.
+	  \end{itemize}
 \end{frame}
 
 \section{Canonical corner blending problem}
@@ -448,5 +453,14 @@ and with $\mathbf{p}_0=(-1,0)$, $\mathbf{p}_3=(\cos\theta,\sin\theta)$ the inter
 		\includegraphics[scale=0.4]{figures/21.png}
 		\caption{Comparison of the PH and optimized ordinary polynomial corner curves for the angle $\theta = \pi/2$ . Left: $G^1$ PH cubic (black) with optimized cubics (red). Center: the $G^2$ PH quintic (black) and optimized quartics (green) and quintics (red). Right: the $G^3$ PH septic (blue) and optimized sextics (red).}
 	\end{figure}
+\end{frame}
+\begin{frame}
+	\frametitle{Conclusion}
+	\begin{itemize}
+		\item Only focusing $\delta_m$ and $\kappa_m$ cannot get a satisfying curvature profile.
+		\item  An objective function was specified as a weighted combination of $\kappa_m$ and $\delta_m$, normalized by their mean values, together with a normalized term measuring the mean square variation of the parametric speed. 
+		\item Experiments based on this objective function and various weights indicate that the best corner shapes are obtained when the parametric speed variation term is dominant.
+		\item PH corner curves have no free parameters, and for higher orders of geometric continuity they are found to yield smaller deviations $\delta_m$ and higher curvatures $\kappa_m$.
+	\end{itemize}
 \end{frame}
 \end{document}
